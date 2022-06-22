@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#0c1325</color>
+    <color name="purple_500">#0c1325</color>
+    <color name="purple_700">#0c1325</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <!--<color name="black">#FF000000</color>-->
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="darkBlue">#0c1325</color>
+    <color name="black">#000001</color>
+    <color name="white_bg_edit_text">#FBFBF9</color>
+    <color name="black_stroke_edit_text">#151515</color>
+    <color name="hintTextColor">#979696</color>
+    <color name="lightFadeColor">#36D3D3D3</color>
+    <color name="shadow">#33000000</color>
+    <color name="kiaAsh">#09304e</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#fff</color>
+
+    <color name="splashBg">@color/darkBlue</color>
+    <color name="loginBg">@color/darkBlue</color>
+    <color name="defaultBg">@color/black</color>
+    <color name="progressBg">@color/shadow</color>
+    <color name="toolBar">@color/kiaAsh</color>
+    <color name="signUpHintText">@color/hintTextColor</color>
+
+    <color name="gray">#AAAAAA</color>
+    <color name="green">#249910</color>
+</resources>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.location.LocationsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/service_appointment_googleMap"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cameraTargetLat="29.2404"
+            app:cameraTargetLng="47.9710"
+            app:cameraZoom="11"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/service_appointment_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/service_appointment_continue_btn"
+                android:visibility="gone"
+                android:layout_width="@dimen/margin_120"
+                android:layout_height="@dimen/margin_48"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:background="@android:color/holo_green_light"
+                android:text="@string/continue_txt"
+                android:textAllCaps="false"
+                android:textColor="@drawable/selector_button_text_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/service_appointment_center_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/service_appointment_continue_btn">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/service_appointment_center_info_cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="@dimen/margin_8"
+                    app:cardElevation="@dimen/margin_4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black"
+                        >
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:layout_margin="@dimen/margin_8"
+                            android:id="@+id/ll_search"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/service_appointment_center_name_txt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_service"
+                                android:background="@null"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:drawableRight="@drawable/ic_search_24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginHorizontal="@dimen/margin_10"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                />
+
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!--<androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/service_appointment_search_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_4"
+                    android:background="@drawable/bg_round_shape"
+                    app:srcCompat="@drawable/ic_search"
+                    app:layout_constraintBottom_toTopOf="@id/service_appointment_center_info_cardView"
+                    app:layout_constraintStart_toStartOf="@id/service_appointment_center_info_cardView"
+                    app:layout_constraintTop_toTopOf="@id/service_appointment_center_info_cardView" />-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/service_appointment_search_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:visibility="gone"
+                android:background="@drawable/bg_round_shape"
+                android:padding="12dp"
+                app:layout_constraintBottom_toTopOf="@id/service_appointment_center_info"
+                app:layout_constraintStart_toStartOf="@id/service_appointment_center_info"
+                app:layout_constraintTop_toTopOf="@id/service_appointment_center_info"
+                app:srcCompat="@drawable/ic_search"
+                app:tint="@color/black" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

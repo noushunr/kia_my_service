@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.serviceapp.kia.ui.fragments.splash.SplashFragment"
+        android:label=" "
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.serviceapp.kia.ui.fragments.auth.login.LoginFragment"
+        android:label=" "
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordDialogFragment2"
+            app:destination="@id/forgotPasswordDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.serviceapp.kia.ui.fragments.auth.signup.SignUpFragment"
+        android:label=" "
+        tools:layout="@layout/sign_up_fragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.serviceapp.kia.ui.fragments.home.HomeFragment"
+        android:label=" "
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_serviceAppointmentFragment"
+            app:destination="@id/serviceAppointmentFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_vehicleHistoryFragment"
+            app:destination="@id/vehicleHistoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_promotionFragment"
+            app:destination="@id/promotionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_servicePricingFragment"
+            app:destination="@id/servicePricingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_locationsFragment"
+            app:destination="@id/locationsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_onlinePaymentFragment"
+            app:destination="@id/onlinePaymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.serviceapp.kia.ui.fragments.contact.ContactUsFragment"
+        android:label=" "
+        tools:layout="@layout/contact_us_fragment" />
+    <fragment
+        android:id="@+id/locationsFragment"
+        android:name="com.serviceapp.kia.ui.fragments.location.LocationsFragment"
+        android:label=" "
+        tools:layout="@layout/locations_fragment" />
+    <fragment
+        android:id="@+id/myBookingFragment"
+        android:name="com.serviceapp.kia.ui.fragments.my.booking.MyBookingFragment"
+        android:label=" "
+        tools:layout="@layout/my_booking_fragment" />
+    <fragment
+        android:id="@+id/myVehicleFragment"
+        android:name="com.serviceapp.kia.ui.fragments.my.vehicle.MyVehicleFragment"
+        android:label=" "
+        tools:layout="@layout/my_vehicle_fragment" >
+        <action
+            android:id="@+id/action_myVehicleFragment_to_addNewVehicleFragment"
+            app:destination="@id/addNewVehicleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.serviceapp.kia.ui.fragments.notification.NotificationFragment"
+        android:label=" "
+        tools:layout="@layout/notification_fragment" />
+    <fragment
+        android:id="@+id/onlinePaymentFragment"
+        android:name="com.serviceapp.kia.ui.fragments.payment.OnlinePaymentFragment"
+        android:label=" "
+        tools:layout="@layout/online_payment_fragment" />
+    <fragment
+        android:id="@+id/promotionFragment"
+        android:name="com.serviceapp.kia.ui.fragments.promotion.PromotionFragment"
+        android:label=" "
+        tools:layout="@layout/promotion_fragment" />
+    <fragment
+        android:id="@+id/serviceAppointmentFragment"
+        android:name="com.serviceapp.kia.ui.fragments.appointment.map.ServiceAppointmentFragment"
+        android:label=" "
+        tools:layout="@layout/service_appointment_fragment" >
+        <action
+            android:id="@+id/action_serviceAppointmentFragment_to_slotAppointmentFragment"
+            app:destination="@id/slotAppointmentFragment"
+            app:popUpTo="@id/homeFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/servicePricingFragment"
+        android:name="com.serviceapp.kia.ui.fragments.pricing.ServicePricingFragment"
+        android:label=" "
+        tools:layout="@layout/service_pricing_fragment" >
+        <action
+            android:id="@+id/action_servicePriceFragment_to_serviceAppointmentFragment"
+            app:destination="@id/serviceAppointmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleHistoryFragment"
+        android:name="com.serviceapp.kia.ui.fragments.history.VehicleHistoryFragment"
+        android:label=" "
+        tools:layout="@layout/vehicle_history_fragment" />
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/homeFragment"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/addNewVehicleFragment"
+        android:name="com.serviceapp.kia.ui.fragments.my.vehicle.addnew.AddNewVehicleFragment"
+        android:label=" "
+        tools:layout="@layout/add_new_vehicle_fragment" />
+    <fragment
+        android:id="@+id/slotAppointmentFragment"
+        android:name="com.serviceapp.kia.ui.fragments.appointment.slot.SlotAppointmentFragment"
+        android:label=" "
+        tools:layout="@layout/slot_appointment_fragment" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_slotAppointmentFragment_to_serviceTypeFragment"
+            app:destination="@id/serviceTypeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/serviceTypeFragment"
+        android:name="com.serviceapp.kia.ui.fragments.appointment.servicetype.ServiceTypeFragment"
+        android:label=" "
+        tools:layout="@layout/service_type_fragment" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="selectedDate"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="slotName"
+            app:argType="string"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_serviceTypeFragment_to_appointmentFragment"
+            app:destination="@id/appointmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentFragment"
+        android:name="com.serviceapp.kia.ui.fragments.appointment.booking.AppointmentFragment"
+        android:label=" "
+        tools:layout="@layout/appointment_fragment" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="selectedDate"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="slotName"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="vehicleId"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="serviceType"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="serviceName"
+            app:argType="string"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_appointmentFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment"
+            app:popUpTo="@id/homeFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.serviceapp.kia.ui.fragments.appointment.summary.SummaryFragment"
+        android:label=" "
+        tools:layout="@layout/summary_fragment" >
+        <argument
+            android:name="bookingId"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="selectedDate"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="slotName"
+            app:argType="string"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_summaryFragment_to_myBookingFragment"
+            app:destination="@id/myBookingFragment"
+            app:popUpTo="@id/summaryFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.serviceapp.kia.ui.fragments.profile.ProfileFragment"
+        android:label=" "
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragmentToUpdatePasswordFragment"
+            app:destination="@id/updatePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updatePasswordFragment"
+        android:name="com.serviceapp.kia.ui.fragments.profile.UpdatePasswordFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_update_password" />
+    <dialog
+        android:id="@+id/forgotPasswordDialogFragment"
+        android:name="com.serviceapp.kia.ui.dialog.ForgotPasswordDialogFragment"
+        android:label=" "
+        tools:layout="@layout/forgot_password_dialog_fragment" />
+</navigation>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.auth.login.LoginFragment">
+    
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.serviceapp.kia.ui.fragments.auth.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/defaultBg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/login_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            app:layout_constraintBottom_toTopOf="@id/login_car_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/login_nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/margin_36"
+                        android:adjustViewBounds="true"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/kia_logo" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/moment_that_inspires"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/login_email_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/login_side_margin_edit_text"
+                        android:layout_marginTop="@dimen/margin_32"
+                        android:layout_marginEnd="@dimen/login_side_margin_edit_text"
+                        android:hint="@string/email_address"
+                        android:background="@drawable/bg_round_white_edit_text"
+                        android:textColorHint="@color/hintTextColor"
+                        android:textAlignment="viewStart"
+                        app:boxBackgroundColor="@null">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/login_email_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:imeOptions="actionNext"
+                            android:inputType="textEmailAddress"
+                            android:textDirection="locale"
+                            android:textAlignment="viewStart"
+                            android:text="@={viewmodel.email}"
+                            android:textSize="14sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/login_side_margin_edit_text"
+                        android:layout_marginTop="@dimen/margin_8"
+                        android:layout_marginEnd="@dimen/login_side_margin_edit_text"
+                        android:background="@drawable/bg_round_white_edit_text"
+                        android:hint="@string/password"
+                        android:textColorHint="@color/hintTextColor"
+                        android:textAlignment="viewStart"
+                        app:boxBackgroundColor="@null"
+                        app:passwordToggleEnabled="true">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/login_password_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:imeOptions="actionDone"
+                            android:textDirection="locale"
+                            android:inputType="textPassword"
+                            android:textAlignment="viewStart"
+                            android:text="@={viewmodel.password}"
+                            android:textSize="14sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/login_submit_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_48"
+                        android:layout_marginTop="@dimen/margin_16"
+                        android:layout_marginEnd="@dimen/margin_48"
+                        android:background="@drawable/bg_round_white_button"
+                        android:minHeight="@dimen/margin_48"
+                        android:onClick="@{() -> viewmodel.login()}"
+                        android:text="@string/login"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        android:textColor="@drawable/selector_button_text_blue"/>
+
+                    <LinearLayout
+                        android:id="@+id/login_biometrics_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:visibility="visible"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_16">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/login_fingerprint_img"
+                            android:layout_width="@dimen/margin_36"
+                            android:layout_height="@dimen/margin_36"
+                            android:cropToPadding="true"
+                            app:srcCompat="@drawable/fingerprint" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/login_face_id_img"
+                            android:layout_width="@dimen/margin_36"
+                            android:layout_height="@dimen/margin_36"
+                            android:layout_marginStart="@dimen/margin_32"
+                            android:cropToPadding="true"
+                            android:duplicateParentState="false"
+                            app:srcCompat="@drawable/face_id" />
+
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/login_remember_checkBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_16"
+                        android:checked="true"
+                        android:text="@string/remember_me"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white" />
+
+                    <LinearLayout
+                        android:id="@+id/login_go_to_signUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_8"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toTopOf="@id/login_car_img"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/first_time_here"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sign_up"
+                            android:layout_marginStart="@dimen/margin_8"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/login_forgot_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/margin_8"
+                        android:layout_marginHorizontal="@dimen/margin_16"
+                        android:padding="@dimen/margin_8"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="@string/find_id_find_password"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/login_car_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

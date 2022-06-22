@@ -1,0 +1,163 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.serviceapp.kia"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 8
+        versionName "1.0.8"
+        multiDexEnabled = true
+
+        vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled = true
+    }
+    viewBinding{
+        enabled = true
+    }
+    kapt {
+        correctErrorTypes = true
+    }
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.multidex:multidex:2.0.1"
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:28.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    //implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+
+    //Constraint Layout
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    //Material Design
+    implementation 'com.google.android.material:material:1.3.0'
+
+    //View Model and Live Data
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+    kapt "androidx.lifecycle:lifecycle-common-java8:2.3.1"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    //Navigation Architecture
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+    //KoDeIn Dependency Injection
+    implementation 'org.kodein.di:kodein-di-generic-jvm:6.5.5'
+    implementation "org.kodein.di:kodein-di-framework-android-x:6.5.5"
+
+    //CoRoutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
+
+    //Work Manager
+    implementation "androidx.work:work-runtime-ktx:2.5.0"
+    implementation "androidx.work:work-rxjava2:2.5.0"
+    implementation "androidx.work:work-gcm:2.5.0"
+
+    //Room
+    implementation "androidx.room:room-runtime:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+
+    //GSon
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //Retrofit and GSon
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //Glide Image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //Runtime Permission
+    implementation 'com.karumi:dexter:6.2.0'
+
+    //OTP View
+    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.2'
+
+    //Sms Auto fetch
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.1'
+
+    //Shared prefs
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    //Logging Timber
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:3.7.0"
+
+    //ImageSlider
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+
+    //Map
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    //Biometric Lock
+    implementation "androidx.biometric:biometric:1.2.0-alpha03"
+
+    //Date Picker
+    implementation 'com.afollestad.material-dialogs:datetime:3.3.0'
+    implementation 'com.afollestad.material-dialogs:lifecycle:3.3.0'
+
+    //PDF Viewer
+    implementation 'com.github.afreakyelf:Pdf-Viewer:1.0.7'
+}

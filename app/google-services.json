@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "807975035405",
+    "project_id": "kia-kw-service",
+    "storage_bucket": "kia-kw-service.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807975035405:android:49d1b3135702b422c6eb44",
+        "android_client_info": {
+          "package_name": "com.almutawa.kia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807975035405-97gqsbk9h2rfth6qbeokdcm5tk5h4rv9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.almutawa.kia",
+            "certificate_hash": "5ba4809a25be252aa611c624dc1cacaffb619d5c"
+          }
+        },
+        {
+          "client_id": "807975035405-dfvk6q0f0giub8qjt33t2i4mod0gs8kf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD18ncvs8V7RmWn79vD0fK3ZuSKdzMm4a4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807975035405-dfvk6q0f0giub8qjt33t2i4mod0gs8kf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "807975035405-9ki3i5ps8ckd95834mbs72pfr4hggt8p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kia.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807975035405:android:2d3436b7614ce79cc6eb44",
+        "android_client_info": {
+          "package_name": "com.demo.kia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807975035405-dfvk6q0f0giub8qjt33t2i4mod0gs8kf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD18ncvs8V7RmWn79vD0fK3ZuSKdzMm4a4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807975035405-dfvk6q0f0giub8qjt33t2i4mod0gs8kf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "807975035405-9ki3i5ps8ckd95834mbs72pfr4hggt8p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kia.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807975035405:android:6d0af11ad19367dac6eb44",
+        "android_client_info": {
+          "package_name": "com.serviceapp.kia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807975035405-kr9s02cfg6h56d8e9bdc35s8r585gjt4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.serviceapp.kia",
+            "certificate_hash": "9a77f02f92b64b910ee94f7dc68de6b834f698d5"
+          }
+        },
+        {
+          "client_id": "807975035405-dfvk6q0f0giub8qjt33t2i4mod0gs8kf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD18ncvs8V7RmWn79vD0fK3ZuSKdzMm4a4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807975035405-dfvk6q0f0giub8qjt33t2i4mod0gs8kf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "807975035405-9ki3i5ps8ckd95834mbs72pfr4hggt8p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kia.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.contact.ContactUsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/defaultBg">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/margin_32"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:layout_marginBottom="@dimen/margin_16"
+                    android:background="@drawable/bg_rectangle_stroke"
+                    android:paddingHorizontal="@dimen/margin_16">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="+965 94115237"
+                        android:textColor="@color/white"
+                        android:layout_weight="1"
+                        android:textSize="22sp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/contact_call_btn_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/margin_8"
+                        android:background="@drawable/bg_round_white_button"
+                        android:minHeight="@dimen/margin_48"
+                        android:text="@string/call"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        android:textColor="@drawable/selector_button_text_blue"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/margin_16"
+                    android:background="@drawable/bg_rectangle_stroke"
+                    android:paddingHorizontal="@dimen/margin_16">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="+965 97906850"
+                        android:textColor="@color/white"
+                        android:layout_weight="1"
+                        android:textSize="22sp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/contact_call_btn_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/margin_8"
+                        android:background="@drawable/bg_round_white_button"
+                        android:minHeight="@dimen/margin_48"
+                        android:text="@string/call"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        android:textColor="@drawable/selector_button_text_blue"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="info@kia.com"
+                    android:layout_margin="@dimen/margin_32"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contact_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/list_contacts" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -9,7 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -18,6 +21,7 @@ import com.serviceapp.kia.databinding.ServicePricingFragmentBinding
 import com.serviceapp.kia.utils.*
 import com.rajat.pdfviewer.PdfViewerActivity
 import com.serviceapp.kia.MainApplication
+import com.serviceapp.kia.data.preferences.PreferenceProvider
 import com.serviceapp.kia.ui.fragments.home.HomeFragmentDirections
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
@@ -35,7 +39,7 @@ class ServicePricingFragment : Fragment(), KodeinAware, NetworkListener {
     private lateinit var navController: NavController
     private lateinit var binding: ServicePricingFragmentBinding
     private val factory: ServicePricingViewModelFactory by instance()
-
+    private lateinit var prefs: PreferenceProvider
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +47,7 @@ class ServicePricingFragment : Fragment(), KodeinAware, NetworkListener {
         viewModel = ViewModelProvider(this, factory).get(ServicePricingViewModel::class.java)
         binding = ServicePricingFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-
+        prefs = PreferenceProvider(requireContext())
         viewModel.listener = this
         return binding.root
     }
@@ -207,27 +211,51 @@ class ServicePricingFragment : Fragment(), KodeinAware, NetworkListener {
 
     override fun onSuccess() {
         hideProgress()
-        if (viewModel.isPdf) {
-            binding.servicePricingPdfCardView.visibility = View.VISIBLE
-            openPdf(viewModel.pdfUrl, viewModel.serviceName)
-        } else {
-            binding.servicePricingPdfCardView.visibility = View.GONE
+        if (viewModel.isServicePricingEnquiry) {
+            Toast.makeText(requireContext(), viewModel.errorMessage, Toast.LENGTH_LONG).show()
+            viewModel.isServicePricingEnquiry = false
+        }else{
+            if (viewModel.isPdf) {
+                binding.servicePricingPdfCardView.visibility = View.VISIBLE
+                openPdf(viewModel.pdfUrl, viewModel.serviceName)
+            } else {
+                binding.servicePricingPdfCardView.visibility = View.GONE
+            }
         }
+
+
     }
 
     override fun onFailure() {
         hideProgress()
-        view?.context?.toast(viewModel.errorMessage)
+        if (viewModel.isServicePricingEnquiry) {
+            Toast.makeText(requireContext(), viewModel.errorMessage, Toast.LENGTH_LONG).show()
+            viewModel.isServicePricingEnquiry = false
+        }else{
+            showPopupWindow()
+        }
+//        view?.context?.toast(viewModel.errorMessage)
+
     }
 
     override fun onError() {
         hideProgress()
-        view?.context?.toast(viewModel.errorMessage)
+        if (viewModel.isServicePricingEnquiry) {
+            Toast.makeText(requireContext(), viewModel.errorMessage, Toast.LENGTH_LONG).show()
+            viewModel.isServicePricingEnquiry = false
+        }else {
+            view?.context?.toast(viewModel.errorMessage)
+        }
     }
 
     override fun onNoNetwork() {
         hideProgress()
-        view?.context?.toast(viewModel.errorMessage)
+        if (viewModel.isServicePricingEnquiry) {
+            Toast.makeText(requireContext(), viewModel.errorMessage, Toast.LENGTH_LONG).show()
+            viewModel.isServicePricingEnquiry = false
+        }else {
+            view?.context?.toast(viewModel.errorMessage)
+        }
     }
 
     override fun onResume() {
@@ -236,4 +264,38 @@ class ServicePricingFragment : Fragment(), KodeinAware, NetworkListener {
         showToolBarContent()
     }
 
+    private fun showPopupWindow() {
+
+        val builder = android.app.AlertDialog.Builder(context,R.style.CustomAlertDialog)
+            .create()
+        val view = layoutInflater.inflate(R.layout.popup_spare_parts,null)
+        builder.setView(view)
+        val etEmail = view.findViewById<EditText>(R.id.et_email)
+        val etToAddress = view.findViewById<EditText>(R.id.et_to)
+        val etSubject = view.findViewById<EditText>(R.id.et_subject)
+        val etContent = view.findViewById<EditText>(R.id.et_content)
+
+        val btnCancel = view.findViewById<AppCompatButton>(R.id.cancel_btn)
+        val btnSubmit = view.findViewById<AppCompatButton>(R.id.submit_btn)
+        btnCancel?.setOnClickListener {
+            builder.dismiss()
+        }
+        btnSubmit?.setOnClickListener {
+            var subject = etSubject?.text.toString()
+            var content = etContent?.text.toString()
+            if (subject.isNullOrEmpty() || content.isNullOrEmpty()){
+                view?.context?.toast(context?.getLocaleStringResource(R.string.all_field_mandate)!!)
+            }else{
+                builder.dismiss()
+                viewModel.servicePricingMail(subject, content)
+            }
+
+        }
+        etEmail.setText(prefs.getUserEmail().toString())
+        etToAddress.setText(getString(R.string.service_pricing_dept))
+        etSubject.setText(getString(R.string.service_pricing_enquiry))
+        etContent.setText(getString(R.string.service_pricing_content))
+        builder.setCanceledOnTouchOutside(false)
+        builder.show()
+    }
 }

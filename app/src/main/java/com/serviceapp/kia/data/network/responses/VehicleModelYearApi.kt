@@ -31,19 +31,19 @@ class VehicleModelYearApi {
 
     data class VehicleModelYearDataResponse(
 
-        @SerializedName("vehicle_regno")
+        @SerializedName("regno")
         var vehicle_regno: String? = null,
 
-        @SerializedName("vehicle_chassis_no")
+        @SerializedName("chassis")
         var vehicle_chassis_no: String? = null,
 
-        @SerializedName("vehicle_model_id")
+        @SerializedName("vehiclemodel_id")
         var vehicle_model_id: String? = null,
 
-        @SerializedName("vehicle_model")
+        @SerializedName("model")
         var vehicle_model: String? = null,
 
-        @SerializedName("vehicle_reg_year")
+        @SerializedName("modelyear")
         var vehicle_reg_year: String? = null,
 
         @SerializedName("Vehicle")

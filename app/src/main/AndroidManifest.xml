@@ -25,7 +25,8 @@
             android:value="AIzaSyCwh1NofIfeF-zC39jT7CfIoP0vbno6JGc"/>
 
         <activity android:name="com.serviceapp.kia.ui.activity.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -107,7 +107,7 @@
     <string name="submit">إارسال</string>
     <string name="check_vehicle">تأكيد البيانات</string>
     <string name="verify_plate_chasis">يرجى التأكد من أرقام اللوحة و الشاصي</string>
-    <string name="verify_plate_chasis_required">ضرورة كتابة أرقام اللوحة و الشاصي</string>
+    <string name="verify_plate_chasis_required">ضرورة كتابة أرقام اللوحة</string>
     <string name="current_password">الرقم السري الحالي</string>
     <string name="new_password">الرقم السري الجديد</string>
     <string name="show_me_directions"><u>توضيح الاتجاهات</u></string>
@@ -146,4 +146,8 @@
     <string name="book_now_message">Do you like to book now?</string>
     <string name="enquiry_sent">Enquiry sent successfully</string>
     <string name="order_no">Order Number</string>
+    <string name="account_added">Your account has been successfully created</string>
+    <string name="service_pricing_dept">KIA Service Pricing dept.</string>
+    <string name="service_pricing_enquiry">Kia Service pricing enquiry</string>
+    <string name="service_pricing_content">Please let me know the details about service pricing.</string>
 </resources>

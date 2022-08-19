@@ -29,15 +29,15 @@ interface MyApi {
         @Field("mailid") mailId: String,
         @Field("name") name: String,
         @Field("phone") phone: String,
-        @Field("phone2") phone2: String?,
-        @Field("dob") dob: String,
-        @Field("gender") gender: String,
+//        @Field("phone2") phone2: String?,
+//        @Field("dob") dob: String,
+//        @Field("gender") gender: String,
         @Field("createpass") createpass: String,
-        @Field("confirmpass") confirmpass: String,
-        @Field("vehicle_regno") vehicle_regno: String,
-        @Field("vehicle_chassis_no") vehicle_chassis_no: String,
-        @Field("vehicle_model") vehicle_model: String,
-        @Field("vehicle_reg_year") vehicle_reg_year: String
+        @Field("confirmpass") confirmpass: String
+//        @Field("vehicle_regno") vehicle_regno: String,
+//        @Field("vehicle_chassis_no") vehicle_chassis_no: String,
+//        @Field("vehicle_model") vehicle_model: String,
+//        @Field("vehicle_reg_year") vehicle_reg_year: String
     ) : Response<SignUpApi.SignUpResponse>
 
     @FormUrlEncoded
@@ -97,7 +97,7 @@ interface MyApi {
     suspend fun userAddNewVehicle(
         @Header("Authorization") token: String,
         @Field("vehicle_regno") vehicle_regno: String,
-        @Field("vehicle_chassis_no") vehicle_chassis_no: String,
+        @Field("phone") phone: String,
         @Field("vehicle_model") vehicle_model: String,
         @Field("vehicle_reg_year") vehicle_reg_year: String
     ) : Response<AddNewVehicleApi.AddNewVehicleResponse>
@@ -244,6 +244,14 @@ interface MyApi {
     ) : Response<VehicleModelYearApi.VehicleModelYearResponse>
 
     @FormUrlEncoded
+    @POST("fetch_erp_vehicledetails")
+    suspend fun fetchVehicle(
+        @Header("Authorization") token: String,
+        @Field("regno") reg: String,
+        @Field("phone") phone: String,
+    ) : Response<VehicleModelYearApi.VehicleModelYearResponse>
+
+    @FormUrlEncoded
     @POST("clear_notification")
     suspend fun userClearNotifications(
         @Header("Authorization") token: String,
@@ -281,6 +289,15 @@ interface MyApi {
         @Field("subject") subject: String,
         @Field("enquery") enquiry: String
     ) : Response<AccidentApi.AccidentResponse>
+
+    @FormUrlEncoded
+    @POST("service_pricing_mail")
+    suspend fun servicePricingMail(
+        @Header("Authorization") token: String,
+        @Field("subject") subject: String,
+        @Field("enquery") enquiry: String
+    ) : Response<AccidentApi.AccidentResponse>
+
     companion object{
         operator fun invoke(
             networkConnectionInterceptor: NetworkConnectionInterceptor

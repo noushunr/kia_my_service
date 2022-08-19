@@ -51,12 +51,12 @@ class HomeRepository(
 
     suspend fun userAddNewVehicle(
         vehicle_regno: String,
-        vehicle_chassis_no: String,
+        phone: String,
         vehicle_model: String,
         vehicle_reg_year: String
     ) : AddNewVehicleApi.AddNewVehicleResponse {
         return apiRequest {
-            api.userAddNewVehicle(userToken(), vehicle_regno, vehicle_chassis_no, vehicle_model, vehicle_reg_year)
+            api.userAddNewVehicle(userToken(), vehicle_regno, phone, vehicle_model, vehicle_reg_year)
         }
     }
 
@@ -166,10 +166,10 @@ class HomeRepository(
 
     suspend fun userVehicleModelYearV2(
         regNo: String,
-        chassisNo: String
+        phone: String
     ) : VehicleModelYearApi.VehicleModelYearResponse {
         return apiRequest {
-            api.userVehicleModelYear(regNo, chassisNo)
+            api.fetchVehicle(userToken(),regNo,phone)
         }
     }
 

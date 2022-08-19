@@ -57,9 +57,11 @@ class SlotAppointmentFragment : Fragment(), KodeinAware, NetworkListener {
     }
 
     private fun initViews() {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, 1)
         binding.slotAppointmentShowCalendarTxt.setOnClickListener {
             MaterialDialog(requireActivity()).show {
-                datePicker(requireFutureDate = true) { _, date ->
+                datePicker(minDate = calendar,requireFutureDate = true) { _, date ->
                     //requireContext().toast("Selected date: ${date.formatDate()}")
                     viewModel.selectedDate = date.formatDateServer()
                     viewModel.fetchSlot()
@@ -72,7 +74,8 @@ class SlotAppointmentFragment : Fragment(), KodeinAware, NetworkListener {
                 }
             }
         }
-        val calendar = Calendar.getInstance()
+//        val calendar = Calendar.getInstance()
+//        calendar.add(Calendar.DAY_OF_YEAR, 1)
         viewModel.selectedDate = calendar.formatDateServer()
         viewModel.fetchSlot()
         binding.slotAppointmentCenterNameTxt.text = viewModel.serviceCenterName

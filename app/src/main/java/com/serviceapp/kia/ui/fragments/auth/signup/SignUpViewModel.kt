@@ -87,20 +87,20 @@ class SignUpViewModel(
         val mRegYear = regYear
         val mModelId = modelId
 
-        if (mModelName.isNullOrEmpty() || mRegYear.isNullOrEmpty() ||
-            mModelId.isNullOrEmpty()) {
-            errorMessage = appContext.getLocaleStringResource(R.string.verify_plate_chasis)
-            listener?.onFailure()
-            return
-        }
+//        if (mModelName.isNullOrEmpty() || mRegYear.isNullOrEmpty() ||
+//            mModelId.isNullOrEmpty()) {
+//            errorMessage = appContext.getLocaleStringResource(R.string.verify_plate_chasis)
+//            listener?.onFailure()
+//            return
+//        }
 
         if (mEmail.isNullOrEmpty() || mName.isNullOrEmpty() ||
             mPhone.isNullOrEmpty() || /*mPhone2.isNullOrEmpty() ||*/
-            mDob.isNullOrEmpty() || mGender.isNullOrEmpty() ||
-            mPassword.isNullOrEmpty() || mConfirmPass.isNullOrEmpty() ||
-            mRegNumber.isNullOrEmpty() || mChassisNumber.isNullOrEmpty() ||
-            mModelName.isNullOrEmpty() || mRegYear.isNullOrEmpty() ||
-            mModelId.isNullOrEmpty()) {
+//            mDob.isNullOrEmpty() || mGender.isNullOrEmpty() ||
+            mPassword.isNullOrEmpty() || mConfirmPass.isNullOrEmpty()
+//            mRegNumber.isNullOrEmpty() || mChassisNumber.isNullOrEmpty() ||
+//            mModelName.isNullOrEmpty() || mRegYear.isNullOrEmpty() || mModelId.isNullOrEmpty()
+            ) {
             errorMessage = appContext.getLocaleStringResource(R.string.enter_field_mandate)
             listener?.onFailure()
             return
@@ -148,9 +148,11 @@ class SignUpViewModel(
             try {
 
                 val response = repository.userSignUp(
-                    mEmail, mName, mPhone, mPhone2, mDob, mGender,
-                    mPassword, mConfirmPass, mRegNumber, mChassisNumber,
-                    mModelId, mRegYear
+                    mEmail, mName, mPhone,
+//                    mPhone2, mDob, mGender,
+                    mPassword, mConfirmPass,
+//                    mRegNumber, mChassisNumber,
+//                    mModelId, mRegYear
                 )
 
                 checkSignUpResponse(response)
@@ -282,7 +284,7 @@ class SignUpViewModel(
         errorMessage = message.toString()
 
         if (data != null  && status.equals(SUCCESS_RESPONSE_CODE)) {
-            errorMessage = appContext?.getString(R.string.vehicle_add_success)
+            errorMessage = appContext?.getString(R.string.account_added)
             listener?.onSuccess()
         } else {
             listener?.onFailure()

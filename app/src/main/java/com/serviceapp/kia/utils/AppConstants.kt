@@ -6,7 +6,7 @@ package com.serviceapp.kia.utils
 */
 
 const val PRO_BASE_API_URL = "https://kiaserviceapp.com/kiamotors/index.php/Kia_api/"
-
+//const val PRO_BASE_API_URL = "https://kiaserviceapp.com/kiamotorsdemo/index.php/Kia_api/"
 const val TEST_BASE_API_URL = "https://awadalmurtajijointkw.com/kiamotors2/index.php/Kia_api/"
 
 const val FIRE_BASE_USER_TOKEN_DEFAULT = "Empty Token String"

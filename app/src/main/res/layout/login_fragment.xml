@@ -62,7 +62,7 @@
                         android:layout_marginStart="@dimen/login_side_margin_edit_text"
                         android:layout_marginTop="@dimen/margin_32"
                         android:layout_marginEnd="@dimen/login_side_margin_edit_text"
-                        android:hint="@string/email_address"
+                        android:hint="@string/user_name"
                         android:background="@drawable/bg_round_white_edit_text"
                         android:textColorHint="@color/hintTextColor"
                         android:textAlignment="viewStart"

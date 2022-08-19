@@ -48,15 +48,19 @@ class UserRepository(
 
     suspend fun userSignUp(
         mailId: String, name: String, phone: String,
-        phone2: String?, dob: String, gender: String,
+//        phone2: String?, dob: String, gender: String,
         createpass: String, confirmpass: String,
-        vehicle_regno: String, vehicle_chassis_no: String,
-        vehicle_model: String, vehicle_reg_year: String
+//        vehicle_regno: String, vehicle_chassis_no: String,
+//        vehicle_model: String, vehicle_reg_year: String
     ) : SignUpApi.SignUpResponse {
         return apiRequest {
-            api.userSignUp(mailId, name, phone, phone2, dob,
-                gender, createpass, confirmpass, vehicle_regno,
-                vehicle_chassis_no, vehicle_model, vehicle_reg_year)
+            api.userSignUp(mailId, name, phone,
+//                phone2, dob,
+//                gender,
+                createpass, confirmpass,
+//                vehicle_regno,
+//                vehicle_chassis_no, vehicle_model, vehicle_reg_year
+            )
         }
     }
 
@@ -131,7 +135,7 @@ class UserRepository(
         chassisNo: String
     ) : VehicleModelYearApi.VehicleModelYearResponse {
         return apiRequest {
-            api.userVehicleModelYear(regNo, chassisNo)
+            api.userVehicleModelYear(regNo,chassisNo)
         }
     }
 

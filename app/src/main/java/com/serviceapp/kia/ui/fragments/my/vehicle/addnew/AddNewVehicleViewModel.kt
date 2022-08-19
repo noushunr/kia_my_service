@@ -29,6 +29,7 @@ class AddNewVehicleViewModel(
     var modelName: String? = null
     var regYear: String? = null
     var modelId: String? = null
+    var phone: String? = null
 
     var isNew = false
     var isVerify = false
@@ -52,6 +53,9 @@ class AddNewVehicleViewModel(
         val mModelName = modelName
         val mRegYear = regYear
         val mModelId = modelId
+        var mPhone = phone
+        if (mPhone==null)
+            mPhone = ""
 
         if (mModelName.isNullOrEmpty() || mRegYear.isNullOrEmpty() ||
             mModelId.isNullOrEmpty()) {
@@ -60,7 +64,7 @@ class AddNewVehicleViewModel(
             return
         }
 
-        if (mRegNumber.isNullOrEmpty() || mChassisNumber.isNullOrEmpty() ||
+        if (mRegNumber.isNullOrEmpty() ||
             mModelName.isNullOrEmpty() || mRegYear.isNullOrEmpty() ||
             mModelId.isNullOrEmpty()) {
             errorMessage = appContext.getLocaleStringResource(R.string.all_field_mandate)
@@ -68,6 +72,11 @@ class AddNewVehicleViewModel(
             return
         }
 
+        if (mPhone!=null && mPhone.length!! in 1..7) {
+            errorMessage = appContext.getLocaleStringResource(R.string.enter_valid_phone)
+            listener?.onFailure()
+            return
+        }
         if (!hasNetwork()) {
             errorMessage = appContext.getLocaleStringResource(R.string.check_network)
             listener?.onFailure()
@@ -82,7 +91,7 @@ class AddNewVehicleViewModel(
             try {
 
                 val response = repository.userAddNewVehicle(
-                    mRegNumber, mChassisNumber,
+                    mRegNumber, mPhone,
                     mModelId, mRegYear
                 )
 
@@ -366,19 +375,29 @@ class AddNewVehicleViewModel(
 
         val mRegNumber = "$plateNumber/$regNumber"
         val mChassisNumber = chassisNumber
+        var mPhone = phone
+        if (mRegNumber.isNullOrEmpty()
+//            || mChassisNumber.isNullOrEmpty()
+        ) {
 
-        if (mRegNumber.isNullOrEmpty() || mChassisNumber.isNullOrEmpty()) {
             errorMessage = appContext.getLocaleStringResource(R.string.verify_plate_chasis_required)
             listener?.onFailure()
             return
         }
+        if (mPhone!=null && mPhone.length!! in 1..7) {
+            errorMessage = appContext.getLocaleStringResource(R.string.enter_valid_phone)
+            listener?.onFailure()
+            return
+        }
+        if (mPhone==null)
+            mPhone = ""
 
         listener?.onStarted()
 
         CoRoutines.main {
             try {
                 val response = repository.userVehicleModelYearV2(
-                    mRegNumber, mChassisNumber
+                    mRegNumber,mPhone
                 )
                 checkModelYearResponse(response)
 

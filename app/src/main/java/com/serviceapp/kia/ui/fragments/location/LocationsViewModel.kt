@@ -19,9 +19,9 @@ class LocationsViewModel(
     var listener: NetworkListener? = null
     var errorMessage: String = ""
 
-    private val mutableServiceCenter = MutableLiveData<MutableList<ServiceCenterApi.ServiceCenterDataResponse>>()
+    private val mutableServiceCenter = MutableLiveData<MutableList<ServiceCenterApi.ServiceCenterDataResponse>?>()
 
-    val liveServiceCenter : LiveData<MutableList<ServiceCenterApi.ServiceCenterDataResponse>>
+    val liveServiceCenter : MutableLiveData<MutableList<ServiceCenterApi.ServiceCenterDataResponse>?>
         get() = mutableServiceCenter
 
     fun fetchServiceCenter() {

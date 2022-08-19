@@ -82,8 +82,8 @@ class LocationsFragment : Fragment(), KodeinAware, NetworkListener, OnMapReadyCa
     private fun initViews() {
         CoRoutines.main {
             viewModel.liveServiceCenter.observe(viewLifecycleOwner, Observer { serviceCenterList ->
-                if (serviceCenterList.size > 0) {
-                    serviceCenterListClone = serviceCenterList
+                if (serviceCenterList?.size!! > 0) {
+                    serviceCenterListClone = serviceCenterList!!
                     poisList = null
                     val plotList = mutableListOf<LekuPoi>()
                     serviceCenterList.forEachIndexed { index, serviceCenter ->

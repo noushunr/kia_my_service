@@ -114,6 +114,12 @@ class BookingRepository(
         }
     }
 
+    suspend fun servicePricingMail(subject:String, content : String) : AccidentApi.AccidentResponse {
+        return apiRequest {
+            api.servicePricingMail(userToken(),subject,content)
+        }
+    }
+
     fun getLocale() = prefs.getLocale()
 
 }

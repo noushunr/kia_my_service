@@ -9,15 +9,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.serviceapp.kia"
         minSdkVersion 23
-        targetSdkVersion 30
-        versionCode 8
-        versionName "1.0.8"
+        targetSdkVersion 32
+        versionCode 12
+        versionName "1.0.12"
         multiDexEnabled = true
 
         vectorDrawables.useSupportLibrary = true
@@ -30,10 +30,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -105,9 +101,9 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
 
     //Work Manager
-    implementation "androidx.work:work-runtime-ktx:2.5.0"
-    implementation "androidx.work:work-rxjava2:2.5.0"
-    implementation "androidx.work:work-gcm:2.5.0"
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
+    implementation "androidx.work:work-rxjava2:2.7.1"
+    implementation "androidx.work:work-gcm:2.7.1"
 
     //Room
     implementation "androidx.room:room-runtime:2.3.0"

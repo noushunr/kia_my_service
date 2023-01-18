@@ -132,15 +132,29 @@ class HomeFragment : Fragment(), KodeinAware, NetworkListener {
             //goToNextFrag(action)
         }
         binding?.homeAccident?.setOnClickListener{
-            var message = getString(R.string.accident_message)
-            val url = "https://api.whatsapp.com/send?phone=${viewModel.accidentNumber.value}&text=$message"
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(url)
-            startActivity(i)
+
+            viewModel.fetchVehicle()
         }
         binding?.homeSpare?.setOnClickListener {
             showPopupWindow()
         }
+
+        viewModel.liveVehicle.observe(viewLifecycleOwner, Observer {
+            var regNo = ""
+            it?.let {
+                it.forEach { data ->
+                    regNo = data.vehicle_regno.toString()
+                    return@forEach
+                }
+            }
+
+            var message = String.format(getString(R.string.accident_message),prefs.getUserPhone(),regNo)
+            val url = "https://api.whatsapp.com/send?phone=${viewModel.accidentNumber.value}&text=$message"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+
+        })
 
     }
 

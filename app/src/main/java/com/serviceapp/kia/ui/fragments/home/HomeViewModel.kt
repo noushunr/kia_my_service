@@ -5,14 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.serviceapp.kia.R
 import com.serviceapp.kia.data.model.SlideModel
-import com.serviceapp.kia.data.network.responses.FcmApi
-import com.serviceapp.kia.data.network.responses.SlidersApi
 import com.serviceapp.kia.data.repositories.HomeRepository
 import com.serviceapp.kia.utils.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
-import com.serviceapp.kia.data.network.responses.AccidentApi
-import com.serviceapp.kia.data.network.responses.ContactApi
+import com.serviceapp.kia.data.network.responses.*
 import timber.log.Timber
 
 class HomeViewModel(
@@ -35,6 +32,10 @@ class HomeViewModel(
         get() = mutableBanner
     var accidentNumber = MutableLiveData<String> ()
     var spairPartsMessage = MutableLiveData<String> ()
+
+    private val mutableVehicle = MutableLiveData<MutableList<MyVehiclesApi.MyVehiclesDataResponse>>()
+    val liveVehicle : LiveData<MutableList<MyVehiclesApi.MyVehiclesDataResponse>>
+        get() = mutableVehicle
     fun fetchBanner() {
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
@@ -272,6 +273,51 @@ class HomeViewModel(
         }
 
         println(response.toString())
+
+    }
+
+    fun fetchVehicle() {
+
+        if (!hasNetwork()) {
+            errorMessage = appContext.getLocaleStringResource(R.string.check_network)
+            listener?.onFailure()
+            return
+        }
+
+        listener?.onStarted()
+
+        CoRoutines.main {
+            try {
+                val response = repository.userMyVehicles()
+
+                val data = response.data
+                val message = data?.message
+                val status = data?.status
+                val res = data?.response
+
+                errorMessage = message.toString()
+
+                if (data != null  && status.equals(SUCCESS_RESPONSE_CODE) && res != null) {
+                    if (res.size > 0) {
+                        mutableVehicle.value = res!!
+                    }else{
+                        mutableVehicle.value = mutableListOf()
+                    }
+                    listener?.onSuccess()
+                } else {
+                    mutableVehicle.value = mutableListOf()
+                    listener?.onFailure()
+                }
+
+                println(response.toString())
+
+            } catch (e: Exception) {
+                errorMessage = appContext.getLocaleStringResource(R.string.something_wrong)
+                println(e.message)
+                mutableVehicle.value = mutableListOf()
+                listener?.onFailure()
+            }
+        }
 
     }
 }

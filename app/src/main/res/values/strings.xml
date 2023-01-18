@@ -131,7 +131,7 @@
     <string name="resend_otp">Resend OTP</string>
     <string name="save">Save</string>
     <string name="send">Send</string>
-    <string name="accident_message">Accident Reporting. Please look into this and do the needful</string>
+    <string name="accident_message">I have met with an accident, please contact me %1$s - Registration Number %2$s</string>
     <string name="vehicle_add_success">Vehicle added successfully</string>
     <string name="search_service">Search Service Center</string>
     <string name="select_kilometer">Select Kilometer</string>

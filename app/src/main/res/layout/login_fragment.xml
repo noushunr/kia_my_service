@@ -42,15 +42,16 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/margin_36"
+                        android:layout_height="54dp"
                         android:adjustViewBounds="true"
                         android:layout_gravity="center"
-                        app:srcCompat="@drawable/kia_logo" />
+                        app:srcCompat="@drawable/kia_logo_new" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:text="@string/moment_that_inspires"
                         android:textColor="@color/white"
                         android:textStyle="bold" />

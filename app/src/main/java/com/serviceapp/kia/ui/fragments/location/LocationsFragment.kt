@@ -112,7 +112,7 @@ class LocationsFragment : Fragment(), KodeinAware, NetworkListener, OnMapReadyCa
                         searchItemsList.add(
                             SearchableItem(
                                 serviceCenter.servicecenter_id.toLong(),
-                                serviceCenter.servicecenter_name.toString()
+                                serviceName
                             )
                         )
                     }
